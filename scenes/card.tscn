@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://baex50p5air4t" path="res://CardDesign/CardBase.png" id="2_rikd4"]
 [ext_resource type="Script" path="res://TargetingComponent.gd" id="3_soh5j"]
 [ext_resource type="Script" path="res://CardBase.gd" id="3_v836w"]
-[ext_resource type="PackedScene" uid="uid://dl3a3kh8llhss" path="res://card_componate.tscn" id="4_3mufv"]
+[ext_resource type="PackedScene" uid="uid://dl3a3kh8llhss" path="res://assets/CardComponent/card_componate.tscn" id="4_3mufv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mnfc5"]
 radius = 61.0737

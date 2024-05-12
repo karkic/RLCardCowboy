@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnp26pe2lqwk2"]
 
 [ext_resource type="Script" path="res://combat.gd" id="1_lbhf2"]
-[ext_resource type="PackedScene" uid="uid://4o2peuvcantf" path="res://EnemyTest.tscn" id="2_mx18g"]
+[ext_resource type="PackedScene" uid="uid://4o2peuvcantf" path="res://scenes/EnemyTest.tscn" id="2_mx18g"]
 [ext_resource type="Script" path="res://Hand.gd" id="3_4hn15"]
-[ext_resource type="PackedScene" uid="uid://bhmfwo1inkgs4" path="res://card.tscn" id="3_xjiw7"]
+[ext_resource type="PackedScene" uid="uid://bhmfwo1inkgs4" path="res://scenes/card.tscn" id="3_xjiw7"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_lbhf2")
