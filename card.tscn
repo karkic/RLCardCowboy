@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhmfwo1inkgs4"]
+
+[ext_resource type="Texture2D" uid="uid://baex50p5air4t" path="res://CardDesign/CardBase.png" id="2_rikd4"]
+[ext_resource type="Script" path="res://TargetingComponent.gd" id="3_soh5j"]
+[ext_resource type="Script" path="res://CardBase.gd" id="3_v836w"]
+[ext_resource type="PackedScene" uid="uid://dl3a3kh8llhss" path="res://card_componate.tscn" id="4_3mufv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mnfc5"]
+radius = 61.0737
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbu1v"]
+size = Vector2(196, 315)
+
+[node name="Card" type="Node2D" node_paths=PackedStringArray("card_component")]
+script = ExtResource("3_v836w")
+card_component = NodePath("CardComponate")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rikd4")
+
+[node name="CardBase" type="Node2D" parent="."]
+
+[node name="TargetingComponate" type="Area2D" parent="." node_paths=PackedStringArray("card_componate")]
+script = ExtResource("3_soh5j")
+card_componate = NodePath("../CardComponate")
+
+[node name="TargetCircle" type="CollisionShape2D" parent="TargetingComponate"]
+shape = SubResource("CircleShape2D_mnfc5")
+
+[node name="MouseColision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseColision"]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_gbu1v")
+
+[node name="CardComponate" parent="." instance=ExtResource("4_3mufv")]
+damage = 20
+
+[connection signal="area_entered" from="TargetingComponate" to="." method="_on_targeting_componate_area_entered"]
+[connection signal="input_event" from="MouseColision" to="." method="_on_mouse_colision_input_event"]
