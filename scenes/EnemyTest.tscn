@@ -2,20 +2,20 @@
 
 [ext_resource type="Script" path="res://EnemyTest.gd" id="1_egjxu"]
 [ext_resource type="Texture2D" uid="uid://b6o136ktek4d5" path="res://testSprite.png" id="1_sroxk"]
-[ext_resource type="PackedScene" uid="uid://bpf3x8wa6ya7v" path="res://hitbox_component.tscn" id="2_df5j2"]
-[ext_resource type="PackedScene" uid="uid://be58ibem6jxhe" path="res://health_component.tscn" id="4_7qh44"]
+[ext_resource type="PackedScene" uid="uid://bpf3x8wa6ya7v" path="res://assets/HitboxComponent/hitbox_component.tscn" id="2_7yd4q"]
+[ext_resource type="PackedScene" uid="uid://be58ibem6jxhe" path="res://assets/HealthComponent/health_component.tscn" id="4_tlrqp"]
 
 [node name="Enemy" type="Node2D" node_paths=PackedStringArray("hitbox_xomponent", "health_component")]
 script = ExtResource("1_egjxu")
 hitbox_xomponent = NodePath("HitboxComponent")
 health_component = NodePath("HealthComponent")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_df5j2")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_7yd4q")]
 health_component = NodePath("../HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_sroxk")
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_7qh44")]
+[node name="HealthComponent" parent="." instance=ExtResource("4_tlrqp")]
 
 [connection signal="health_change" from="HealthComponent" to="." method="_on_health_component_health_change"]
