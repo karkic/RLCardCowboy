@@ -3,7 +3,7 @@ class_name HitboxComponent
 @export var health_component: HealthComponent
 
 func damage(attack):
-	print(attack)
+	#print(attack)
 	if health_component:
 		health_component.takeDamage(attack)
 
