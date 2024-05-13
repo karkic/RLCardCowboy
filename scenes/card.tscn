@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://baex50p5air4t" path="res://CardDesign/CardBase.png" id="2_rikd4"]
 [ext_resource type="Script" path="res://TargetingComponent.gd" id="3_soh5j"]
 [ext_resource type="Script" path="res://CardBase.gd" id="3_v836w"]
-[ext_resource type="PackedScene" uid="uid://dl3a3kh8llhss" path="res://assets/CardComponent/card_componate.tscn" id="4_3mufv"]
+[ext_resource type="PackedScene" uid="uid://dl3a3kh8llhss" path="res://assets/CardComponent/card_componate.tscn" id="4_vtihe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mnfc5"]
 radius = 61.0737
@@ -11,9 +11,10 @@ radius = 61.0737
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbu1v"]
 size = Vector2(196, 315)
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("card_component")]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("card_component", "targeting_component")]
 script = ExtResource("3_v836w")
 card_component = NodePath("CardComponate")
+targeting_component = NodePath("TargetingComponate")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_rikd4")
@@ -33,8 +34,14 @@ shape = SubResource("CircleShape2D_mnfc5")
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_gbu1v")
 
-[node name="CardComponate" parent="." instance=ExtResource("4_3mufv")]
+[node name="CardComponate" parent="." instance=ExtResource("4_vtihe")]
 damage = 20
 
-[connection signal="area_entered" from="TargetingComponate" to="." method="_on_targeting_componate_area_entered"]
+[node name="Label" type="Label" parent="."]
+offset_left = -33.0
+offset_top = 117.0
+offset_right = 24.0
+offset_bottom = 140.0
+text = "20 dmg"
+
 [connection signal="input_event" from="MouseColision" to="." method="_on_mouse_colision_input_event"]

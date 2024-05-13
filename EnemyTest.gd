@@ -13,6 +13,6 @@ func _process(delta):
 
 
 func _on_health_component_health_change(new_hitpoints):
-	print(new_hitpoints)
+	#print(new_hitpoints)
 	if new_hitpoints <= 0:
 		queue_free()

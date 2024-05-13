@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnp26pe2lqwk2"]
+[gd_scene load_steps=8 format=3 uid="uid://bnp26pe2lqwk2"]
 
 [ext_resource type="Script" path="res://combat.gd" id="1_lbhf2"]
 [ext_resource type="PackedScene" uid="uid://4o2peuvcantf" path="res://scenes/EnemyTest.tscn" id="2_mx18g"]
 [ext_resource type="Script" path="res://Hand.gd" id="3_4hn15"]
-[ext_resource type="PackedScene" uid="uid://bhmfwo1inkgs4" path="res://scenes/card.tscn" id="3_xjiw7"]
+[ext_resource type="Script" path="res://CancelPlay.gd" id="5_5wopc"]
+[ext_resource type="Script" path="res://Deck.gd" id="5_vkkw1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4ppr"]
+size = Vector2(122, 183)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0e7i"]
+size = Vector2(1344, 321)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_lbhf2")
@@ -14,21 +21,29 @@ position = Vector2(1038, 111)
 [node name="Enemy2" parent="." instance=ExtResource("2_mx18g")]
 position = Vector2(693, 118)
 
-[node name="Hand" type="Node2D" parent="."]
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("player_deck")]
 position = Vector2(578, 464)
 script = ExtResource("3_4hn15")
-
-[node name="Card" parent="Hand" instance=ExtResource("3_xjiw7")]
-position = Vector2(-337, 1)
-
-[node name="Card2" parent="Hand" instance=ExtResource("3_xjiw7")]
-position = Vector2(-117, -14)
-
-[node name="Card3" parent="Hand" instance=ExtResource("3_xjiw7")]
-position = Vector2(106, -31)
+player_deck = NodePath("../DrawPile/Deck")
 
 [node name="DiscardPile" type="Node2D" parent="."]
 position = Vector2(1105, 455)
 
 [node name="DrawPile" type="Node2D" parent="."]
 position = Vector2(62, 461)
+
+[node name="Deck" type="Area2D" parent="DrawPile"]
+script = ExtResource("5_vkkw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrawPile/Deck"]
+position = Vector2(6, 38.5)
+shape = SubResource("RectangleShape2D_b4ppr")
+
+[node name="Sprite2D" type="Sprite2D" parent="DrawPile"]
+
+[node name="CancelPlay" type="Area2D" parent="."]
+script = ExtResource("5_5wopc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CancelPlay"]
+position = Vector2(589, 530)
+shape = SubResource("RectangleShape2D_f0e7i")
